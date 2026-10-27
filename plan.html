@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Review a meal plan generated from your NutriPlan profile, food preferences, and estimated calorie target.">
+  <title>NutriPlan | Meal Plan</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="NutriPlan home"><span class="brand-leaf" aria-hidden="true"></span>NutriPlan</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span></button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
+        <a href="index.html" aria-label="Home">Home</a><a href="profile.html">My Profile</a><a href="plan.html" aria-current="page">Meal Plan</a><a href="progress.html">Progress</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="content-width page-main">
+    <div class="page-title page-title-row">
+      <div><p class="eyebrow">Built around your profile</p><h1>Your Personalized Meal Plan</h1><p>Meal ideas are selected from the meal database using your saved preferences.</p></div>
+      <span class="status-label">Educational prototype</span>
+    </div>
+
+    <div class="profile-needed" id="profile-needed">
+      <p class="eyebrow">A plan starts with you</p>
+      <h2>Complete your profile first</h2>
+      <p id="profile-needed-message">Add your details, goals, diet preference, and estimated calorie target so NutriPlan can choose suitable meal ideas.</p>
+      <a class="button button-primary" href="profile.html">Go to My Profile <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <!-- These saved profile values are filled by script.js after the profile is checked. -->
+    <section class="plan-profile-summary" id="bmi-summary" hidden aria-label="Your profile summary">
+      <div class="profile-summary-item"><p>Your name</p><p id="profile-name">--</p></div>
+      <div class="profile-summary-item"><p>Nutrition goal</p><p id="profile-goal">--</p></div>
+      <div class="profile-summary-item"><p>Diet preference</p><p id="profile-diet">--</p></div>
+      <div class="profile-summary-item"><p>BMI</p><p><span id="bmi-value">--</span> <span id="bmi-category"></span></p></div>
+      <div class="profile-summary-item"><p>Estimated daily calorie target</p><p><span id="profile-calorie-target">--</span> kcal</p></div>
+      <div class="calorie-estimates" id="calorie-estimates" hidden aria-labelledby="calorie-estimates-title">
+        <h2 id="calorie-estimates-title">Estimated daily calories</h2>
+        <div class="calorie-grid">
+          <div class="calorie-item"><p>Estimated BMR</p><p><span id="bmr-value">--</span> <span>kcal/day</span></p></div>
+          <div class="calorie-item"><p>Estimated Maintenance Calories</p><p><span id="maintenance-calories">--</span> <span>kcal/day</span></p></div>
+          <div class="calorie-item"><p>Daily Calorie Target</p><p><span id="daily-calorie-target">--</span> <span>kcal/day</span></p></div>
+        </div>
+        <p class="calorie-note">These are estimates for educational purposes only, not medical or dietary advice.</p>
+      </div>
+      <p class="calorie-unavailable" id="calorie-unavailable" hidden></p>
+      <p class="bmi-note">BMI is a general indicator, not a medical diagnosis or personalized medical advice.</p>
+    </section>
+
+    <div class="personalized-plan" id="personalized-plan" hidden>
+      <section class="meal-plan-section" aria-labelledby="meals-title">
+        <div class="meal-plan-heading">
+          <div><p class="eyebrow">Today's selection</p><h2 id="meals-title">Meals chosen for your preferences</h2></div>
+          <button class="button button-secondary" id="regenerate-plan" type="button"><span aria-hidden="true">&#8635;</span> Regenerate Plan</button>
+        </div>
+        <p class="plan-warning" id="meal-plan-warning" hidden></p>
+        <p class="plan-error" id="meal-plan-error" role="alert" hidden></p>
+        <div class="generated-meals" id="generated-meals" aria-live="polite"></div>
+      </section>
+
+      <section class="daily-summary" id="daily-summary" aria-labelledby="daily-summary-title">
+        <div class="daily-summary-heading"><p class="eyebrow">Your selected meals</p><h2 id="daily-summary-title">Daily Nutrition Summary</h2></div>
+        <div class="daily-summary-grid">
+          <div><p>Total Calories</p><p><span id="total-calories">0</span> <span>kcal</span></p></div>
+          <div><p>Total Protein</p><p><span id="total-protein">0</span> <span>g</span></p></div>
+          <div><p>Total Carbohydrates</p><p><span id="total-carbohydrates">0</span> <span>g</span></p></div>
+          <div><p>Total Fats</p><p><span id="total-fats">0</span> <span>g</span></p></div>
+        </div>
+      </section>
+      <p class="disclaimer plan-disclaimer">This meal plan is a prototype for educational purposes and is not a substitute for advice from a qualified healthcare or nutrition professional.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner content-width"><a class="brand brand-small" href="index.html"><span class="brand-leaf" aria-hidden="true"></span>NutriPlan</a><p>Personalized nutrition made simple.</p><p class="copyright">&copy; 2026 NutriPlan. All rights reserved.</p></div></footer>
+</body>
+</html>

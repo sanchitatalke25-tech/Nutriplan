@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NutriPlan creates meal-planning guidance shaped around your goals, lifestyle, and dietary preferences.">
+  <title>NutriPlan | Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="NutriPlan home"><span class="brand-leaf" aria-hidden="true"></span>NutriPlan</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="menu-toggle-label">Menu</span>
+      </button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="profile.html">My Profile</a>
+        <a href="plan.html">Meal Plan</a>
+        <a href="progress.html">Progress</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero introduces the service and uses a CSS illustration instead of an external image. -->
+    <section class="landing-hero content-width" aria-labelledby="home-title">
+      <div class="landing-copy">
+        <p class="eyebrow">Nutrition that fits real life</p>
+        <h1 id="home-title">Your Health.<br>Your Plan.<br><span>Your Way.</span></h1>
+        <p class="landing-intro">NutriPlan creates personalized meal plans shaped around your health goals, lifestyle, and dietary preferences, helping you make everyday food choices with more confidence.</p>
+        <a class="button button-primary landing-cta" href="profile.html">Get Started <span aria-hidden="true">&rarr;</span></a>
+        <p class="landing-caption">A simple place to begin building healthier habits.</p>
+      </div>
+      <div class="food-art" role="img" aria-label="Illustration of a colorful bowl with vegetables, grains, and greens">
+        <span class="art-sun" aria-hidden="true"></span>
+        <div class="food-plate" aria-hidden="true">
+          <span class="food-leaf leaf-one"></span><span class="food-leaf leaf-two"></span>
+          <span class="food-tomato tomato-one"></span><span class="food-tomato tomato-two"></span>
+          <span class="food-carrot"></span><span class="food-grains"></span>
+          <span class="food-seed seed-one"></span><span class="food-seed seed-two"></span><span class="food-seed seed-three"></span>
+        </div>
+        <span class="art-note">Good food,<br>made personal.</span>
+      </div>
+    </section>
+
+    <!-- This dashboard snapshot is filled from the profile, plan, and today's tracking record. -->
+    <section class="home-dashboard content-width" id="home-dashboard" aria-labelledby="dashboard-title">
+      <div class="dashboard-heading">
+        <div><p class="eyebrow">Your NutriPlan</p><h2 id="dashboard-title">Your dashboard</h2><p id="dashboard-welcome">A quick view of your nutrition plan and daily progress.</p></div>
+        <a class="text-link" href="profile.html">My Profile <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="dashboard-empty" id="dashboard-empty">
+        <p id="dashboard-empty-message">Set up your profile to connect your nutrition goals, meal plan, and daily progress.</p>
+        <a class="button button-primary" id="dashboard-empty-link" href="profile.html">Create Your Profile <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="dashboard-data" id="dashboard-data" hidden>
+        <div class="dashboard-metrics">
+          <article><p>Nutrition goal</p><p id="dashboard-goal">--</p></article>
+          <article><p>BMI</p><p><span id="dashboard-bmi">--</span> <span id="dashboard-bmi-category"></span></p></article>
+          <article><p>Daily calorie target</p><p id="dashboard-calorie-target">--</p></article>
+          <article><p>Meals in current plan</p><p id="dashboard-meal-count">Not generated</p></article>
+        </div>
+        <div class="dashboard-details">
+          <div class="dashboard-meal-preview"><div><p class="eyebrow">Latest selection</p><h3>Meal plan</h3></div><ul id="dashboard-meal-names"><li>No saved meal plan yet.</li></ul><a class="text-link" href="plan.html">View Meal Plan <span aria-hidden="true">&rarr;</span></a></div>
+          <div class="dashboard-intake"><div><p class="eyebrow">Local daily record</p><h3>Today's intake</h3></div><dl><div><dt>Calories</dt><dd id="dashboard-calories">Not logged</dd></div><div><dt>Protein</dt><dd id="dashboard-protein">Not logged</dd></div><div><dt>Carbohydrates</dt><dd id="dashboard-carbohydrates">Not logged</dd></div><div><dt>Fats</dt><dd id="dashboard-fats">Not logged</dd></div></dl><a class="text-link" href="progress.html">Open Progress <span aria-hidden="true">&rarr;</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Each feature card gives a quick overview of one part of the planner. -->
+    <section class="landing-section content-width" aria-labelledby="features-title">
+      <div class="landing-section-heading">
+        <p class="eyebrow">A plan with you in mind</p>
+        <h2 id="features-title">Wellness, made more personal</h2>
+        <p>Thoughtful tools to help make balanced choices feel a little more manageable.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">&#127793;</span>
+          <p class="feature-number">01 / PERSONALIZE</p>
+          <h3>Personalized Nutrition</h3>
+          <p>Start with your goals, routine, and food preferences to shape a plan that feels relevant to you.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">&#129367;</span>
+          <p class="feature-number">02 / PLAN</p>
+          <h3>Smart Meal Planning</h3>
+          <p>Explore meal ideas organized across your day, with flexibility for the way you like to eat.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">&#128200;</span>
+          <p class="feature-number">03 / REFLECT</p>
+          <h3>Progress Tracking</h3>
+          <p>Keep an eye on simple habits and milestones as you work toward the goals that matter to you.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- The numbered steps make the first-time user journey easy to scan. -->
+    <section class="how-section" aria-labelledby="how-title">
+      <div class="content-width">
+        <div class="landing-section-heading how-heading">
+          <p class="eyebrow">Three steps, one good start</p>
+          <h2 id="how-title">How NutriPlan works</h2>
+        </div>
+        <ol class="how-list">
+          <li class="how-step"><span class="how-number">01</span><div><h3>Enter Your Details</h3><p>Share a little about your lifestyle, goals, and dietary preferences.</p></div></li>
+          <li class="how-step"><span class="how-number">02</span><div><h3>Get Your Personalized Plan</h3><p>See meal ideas organized around the information you provide.</p></div></li>
+          <li class="how-step"><span class="how-number">03</span><div><h3>Track Your Progress</h3><p>Review your habits over time and celebrate the steps you take.</p></div></li>
+        </ol>
+        <a class="text-link how-link" href="profile.html">Create your profile <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner content-width">
+      <a class="brand brand-small" href="index.html"><span class="brand-leaf" aria-hidden="true"></span>NutriPlan</a>
+      <p>Personalized nutrition made simple.</p>
+      <p class="copyright">&copy; 2026 NutriPlan. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

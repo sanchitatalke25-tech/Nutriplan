@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Track daily nutrition, weekly intake, and weight goals with your NutriPlan profile.">
+  <title>NutriPlan | Progress</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="NutriPlan home"><span class="brand-leaf" aria-hidden="true"></span>NutriPlan</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span></button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a><a href="profile.html">My Profile</a><a href="plan.html">Meal Plan</a><a href="progress.html" aria-current="page">Progress</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="content-width page-main">
+    <div class="page-title page-title-row">
+      <div><p class="eyebrow">Small steps, seen over time</p><h1>Progress &amp; Nutrition Tracking</h1><p>Record your daily intake and review how it compares with your meal plan.</p></div>
+      <span class="status-label">Educational prototype</span>
+    </div>
+
+    <!-- This state is replaced with saved profile details when available. -->
+    <section class="progress-profile-summary" id="progress-profile-summary" hidden aria-label="Your profile summary">
+      <div><p>Your name</p><p id="progress-name">--</p></div>
+      <div><p>Nutrition goal</p><p id="progress-goal">--</p></div>
+      <div><p>Daily calorie target</p><p id="progress-calorie-target">--</p></div>
+      <div><p>BMI</p><p><span id="progress-bmi">--</span> <span id="progress-bmi-category"></span></p></div>
+    </section>
+
+    <section class="empty-state" id="profile-empty-state" aria-labelledby="profile-empty-title">
+      <h2 id="profile-empty-title">Your profile is needed first</h2>
+      <p>Complete your NutriPlan profile to see your nutrition targets and start tracking.</p>
+      <a class="button button-primary" href="profile.html">Complete My Profile <span aria-hidden="true">&rarr;</span></a>
+    </section>
+
+    <section class="empty-state" id="plan-empty-state" hidden aria-labelledby="plan-empty-title">
+      <h2 id="plan-empty-title">Generate your meal plan first</h2>
+      <p id="plan-empty-message">Your nutrition plan provides the daily macro targets used on this page.</p>
+      <a class="button button-primary" href="plan.html">Open Meal Plan <span aria-hidden="true">&rarr;</span></a>
+    </section>
+
+    <section class="tracking-dashboard" id="tracking-dashboard" hidden aria-labelledby="daily-progress-title">
+      <div class="section-heading progress-heading">
+        <div><p class="eyebrow">Today</p><h2 id="daily-progress-title">Daily Nutrition Progress</h2></div>
+        <p class="section-summary">Progress targets come from your profile and latest selected meal plan.</p>
+      </div>
+
+      <p class="tracking-empty-message" id="tracking-empty-message">No intake recorded today yet. Enter your consumed amounts below to get started.</p>
+
+      <div class="tracking-metrics">
+        <article class="tracking-metric">
+          <div class="tracking-metric-heading"><h3>Calories</h3><span>kcal</span></div>
+          <p><span id="calories-consumed">0</span> consumed <span class="metric-divider">/</span> <span id="calories-target">0</span> target</p>
+          <div class="tracking-bar" id="calories-progressbar" role="progressbar" aria-label="Calories consumed" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"><span id="calories-bar"></span></div>
+          <p class="remaining-copy">Remaining: <strong id="calories-remaining">0</strong></p>
+        </article>
+        <article class="tracking-metric">
+          <div class="tracking-metric-heading"><h3>Protein</h3><span>g</span></div>
+          <p><span id="protein-consumed">0</span> consumed <span class="metric-divider">/</span> <span id="protein-target">0</span> target</p>
+          <div class="tracking-bar" id="protein-progressbar" role="progressbar" aria-label="Protein consumed" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"><span id="protein-bar"></span></div>
+          <p class="remaining-copy">Remaining: <strong id="protein-remaining">0</strong></p>
+        </article>
+        <article class="tracking-metric">
+          <div class="tracking-metric-heading"><h3>Carbohydrates</h3><span>g</span></div>
+          <p><span id="carbohydrates-consumed">0</span> consumed <span class="metric-divider">/</span> <span id="carbohydrates-target">0</span> target</p>
+          <div class="tracking-bar" id="carbohydrates-progressbar" role="progressbar" aria-label="Carbohydrates consumed" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"><span id="carbohydrates-bar"></span></div>
+          <p class="remaining-copy">Remaining: <strong id="carbohydrates-remaining">0</strong></p>
+        </article>
+        <article class="tracking-metric">
+          <div class="tracking-metric-heading"><h3>Fats</h3><span>g</span></div>
+          <p><span id="fats-consumed">0</span> consumed <span class="metric-divider">/</span> <span id="fats-target">0</span> target</p>
+          <div class="tracking-bar" id="fats-progressbar" role="progressbar" aria-label="Fats consumed" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"><span id="fats-bar"></span></div>
+          <p class="remaining-copy">Remaining: <strong id="fats-remaining">0</strong></p>
+        </article>
+      </div>
+
+      <!-- Manual intake is saved locally under today's date. -->
+      <form class="tracking-form" id="tracking-form">
+        <div class="tracking-form-heading"><div><p class="eyebrow">Manual entry</p><h3>Update today's intake</h3></div></div>
+        <div class="tracking-input-grid">
+          <div class="form-field"><label for="input-calories">Calories consumed (kcal)</label><input id="input-calories" name="calories" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 1850" required></div>
+          <div class="form-field"><label for="input-protein">Protein consumed (g)</label><input id="input-protein" name="protein" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 95" required></div>
+          <div class="form-field"><label for="input-carbohydrates">Carbohydrates consumed (g)</label><input id="input-carbohydrates" name="carbohydrates" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 220" required></div>
+          <div class="form-field"><label for="input-fats">Fats consumed (g)</label><input id="input-fats" name="fats" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 65" required></div>
+        </div>
+        <div class="tracking-actions">
+          <button class="button button-primary" type="submit">Update Progress</button>
+          <button class="button button-secondary" id="reset-today" type="button">Reset Today's Progress</button>
+          <p class="tracking-status" id="tracking-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <section class="weight-goal-section" id="weight-goal-section" hidden aria-labelledby="weight-goal-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Longer view</p><h2 id="weight-goal-title">Goal Progress</h2></div>
+        <p class="section-summary">Weight milestones are optional and are shown only when available in your profile.</p>
+      </div>
+      <div class="weight-summary-grid">
+        <div><p>Current weight</p><p id="current-weight">--</p></div>
+        <div><p>Goal</p><p id="weight-goal">--</p></div>
+        <div><p>Starting weight</p><p id="starting-weight">--</p></div>
+        <div><p>Target weight</p><p id="target-weight">Not set</p></div>
+      </div>
+      <div class="weight-progress" id="weight-progress" hidden>
+        <div class="weight-progress-label"><span>Weight goal progress</span><strong id="weight-progress-value">0%</strong></div>
+        <div class="tracking-bar" id="weight-progressbar" role="progressbar" aria-label="Weight goal progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="weight-progress-fill"></span></div>
+      </div>
+      <p class="weight-progress-empty" id="weight-progress-empty">Set a target weight in your profile to view weight goal progress.</p>
+    </section>
+
+    <section class="weekly-section" aria-labelledby="weekly-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Recent records</p><h2 id="weekly-title">Weekly Progress</h2></div>
+        <p class="section-summary">Your locally saved daily intake for the last seven days.</p>
+      </div>
+      <div class="weekly-table-wrap">
+        <table class="weekly-table">
+          <thead><tr><th scope="col">Date</th><th scope="col">Calories (kcal)</th><th scope="col">Protein (g)</th><th scope="col">Carbs (g)</th><th scope="col">Fats (g)</th></tr></thead>
+          <tbody id="weekly-records"></tbody>
+        </table>
+      </div>
+      <p class="weekly-empty-message" id="weekly-empty-message">No progress records have been saved in the last seven days.</p>
+    </section>
+
+    <p class="disclaimer page-disclaimer">Nutrition tracking shown here is a prototype for educational purposes and is not medical advice.</p>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner content-width"><a class="brand brand-small" href="index.html"><span class="brand-leaf" aria-hidden="true"></span>NutriPlan</a><p>Personalized nutrition made simple.</p><p class="copyright">&copy; 2026 NutriPlan. All rights reserved.</p></div></footer>
+</body>
+</html>
