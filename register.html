@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | NutriPlan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 320px;
+            box-shadow: 0 4px 15px #00000018;
+        }
+
+        h1 {
+            color: #24834b;
+            text-align: center;
+        }
+
+        input, button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        input {
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #24834b;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        a {
+            color: #24834b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>NutriPlan</h1>
+        <p>Create your account to get started.</p>
+
+        <form id="registerForm">
+            <input
+                type="text"
+                id="name"
+                placeholder="Full name"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email address"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password (at least 8 characters)"
+                minlength="8"
+                required
+            >
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p id="message" role="status"></p>
+
+        <p>Already registered? <a href="login.html">Log in</a></p>
+        <p><a href="index.html">Back to Home</a></p>
+    </div>
+
+    <script>
+        const form = document.getElementById("registerForm");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            message.textContent = "Creating your account...";
+
+            try {
+                const response = await fetch(
+                    "http://localhost:5000/api/auth/register",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            password: password
+                        })
+                    }
+                );
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || "Registration failed.");
+                }
+
+                message.textContent =
+                    "Account created successfully! You can now log in.";
+
+                form.reset();
+                window.location.href = "login.html";
+            } catch (error) {
+                message.textContent =
+                    error.message === "Failed to fetch"
+                        ? "Could not connect. Check that your backend is running."
+                        : error.message;
+            }
+        });
+    </script>
+</body>
+</html>

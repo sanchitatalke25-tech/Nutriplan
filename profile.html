@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create your NutriPlan profile with personal details, health goals, activity level, and food preferences.">
+  <title>NutriPlan | Profile</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="NutriPlan home"><span class="brand-leaf" aria-hidden="true"></span>NutriPlan</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span></button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a><a href="profile.html" aria-current="page">My Profile</a><a href="plan.html">Meal Plan</a><a href="progress.html">Progress</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="content-width page-main">
+    <div class="page-title profile-page-title">
+      <p class="eyebrow">Your starting point</p>
+      <h1>Build your nutrition profile</h1>
+      <p>Tell us about your routine and preferences. Your details will help shape a plan in a future version of NutriPlan.</p>
+    </div>
+
+    <!-- This uniquely identified form is ready for future JavaScript processing. -->
+    <form class="profile-form" id="nutrition-profile-form">
+      <!-- Personal details are required so the next step has the basic profile information. -->
+      <fieldset class="form-section">
+        <legend><span class="step-number">01</span> Personal information</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="full-name">Full Name <span class="required-mark">*</span></label>
+            <input id="full-name" name="fullName" type="text" autocomplete="name" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-field">
+            <label for="age">Age <span class="required-mark">*</span></label>
+            <input id="age" name="age" type="number" min="13" max="120" inputmode="numeric" placeholder="Enter your age in years" required>
+          </div>
+          <div class="form-field">
+            <label for="gender">Gender <span class="required-mark">*</span></label>
+            <select id="gender" name="gender" required>
+              <option value="">Select an option</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="non-binary">Non-binary</option>
+              <option value="prefer-not-to-say">Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Height and weight use numeric inputs with units stated in their labels. -->
+      <fieldset class="form-section">
+        <legend><span class="step-number">02</span> Body information</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="height">Height (cm) <span class="required-mark">*</span></label>
+            <input id="height" name="heightCm" type="number" min="80" max="250" step="0.1" inputmode="decimal" placeholder="For example, 170" required>
+          </div>
+          <div class="form-field">
+            <label for="weight">Weight (kg) <span class="required-mark">*</span></label>
+            <input id="weight" name="weightKg" type="number" min="20" max="350" step="0.1" inputmode="decimal" placeholder="For example, 65" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- These dropdowns use the options requested for the starter planner. -->
+      <fieldset class="form-section">
+        <legend><span class="step-number">03</span> Lifestyle and goals</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="activity-level">Activity Level <span class="required-mark">*</span></label>
+            <select id="activity-level" name="activityLevel" required>
+              <option value="">Choose your usual activity</option>
+              <option value="sedentary">Sedentary</option>
+              <option value="lightly-active">Lightly Active</option>
+              <option value="moderately-active">Moderately Active</option>
+              <option value="very-active">Very Active</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="nutrition-goal">Nutrition Goal <span class="required-mark">*</span></label>
+            <select id="nutrition-goal" name="nutritionGoal" required>
+              <option value="">Choose your main goal</option>
+              <option value="weight-loss">Weight Loss</option>
+              <option value="weight-gain">Weight Gain</option>
+              <option value="maintain-weight">Maintain Weight</option>
+              <option value="muscle-gain">Muscle Gain</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Optional food notes let users mention allergies and dislikes in their own words. -->
+      <fieldset class="form-section">
+        <legend><span class="step-number">04</span> Diet and food preferences</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="diet-preference">Diet Preference <span class="required-mark">*</span></label>
+            <select id="diet-preference" name="dietPreference" required>
+              <option value="">Choose a diet preference</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="non-vegetarian">Non-Vegetarian</option>
+              <option value="vegan">Vegan</option>
+            </select>
+          </div>
+          <div class="form-field form-field-wide">
+            <label for="food-allergies">Food allergies</label>
+            <textarea id="food-allergies" name="foodAllergies" rows="3" placeholder="List any food allergies, or leave blank if none"></textarea>
+          </div>
+          <div class="form-field form-field-wide">
+            <label for="disliked-foods">Foods you dislike</label>
+            <textarea id="disliked-foods" name="dislikedFoods" rows="3" placeholder="List foods you would prefer to avoid (optional)"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button class="button button-primary profile-submit" type="submit">Generate My Personalized Plan <span aria-hidden="true">&rarr;</span></button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+    <p class="disclaimer page-disclaimer"><strong>Note:</strong> This project is an educational preview. It does not yet calculate nutrition needs or provide medical advice.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner content-width">
+      <a class="brand brand-small" href="index.html"><span class="brand-leaf" aria-hidden="true"></span>NutriPlan</a>
+      <p>Personalized nutrition made simple.</p>
+      <p class="copyright">&copy; 2026 NutriPlan. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
