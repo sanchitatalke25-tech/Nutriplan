@@ -65,7 +65,7 @@ function normalizeDietType(value) {
 }
 
 async function loadMealsFromDatabase() {
-  const response = await fetch("http://localhost:5000/api/meals");
+  const response = await fetch("https://nutriplan-u8xu.onrender.com/api/meals");
 
   if (!response.ok) {
     throw new Error("Could not load meals from the MySQL database.");
@@ -443,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const response = await fetch("http://localhost:5000/api/profile", {
+        const response = await fetch("https://nutriplan-u8xu.onrender.com/api/profile", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
