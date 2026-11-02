@@ -35,7 +35,8 @@ router.post("/register", async (req, res) => {
             (err, result) => {
                 if (err) {
                     if (err.code === "ER_DUP_ENTRY") {
-                        return res.status(409).json({
+                         console.error("Login database error:", err.message);
+                         return res.status(409).json({
                             message: "This email is already registered."
                         });
                     }
